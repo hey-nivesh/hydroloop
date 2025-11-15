@@ -101,8 +101,8 @@ const Navbar = () => {
           <Link href="/blog" className="hover:text-orange-500 transition-colors">
             Blog
           </Link>
-          <Link href="/contact" className="hover:text-orange-500 transition-colors">
-            Contact
+          <Link href="/quiz" className="hover:text-orange-500 transition-colors">
+            Quizzes
           </Link>
         </div>
 
@@ -174,8 +174,8 @@ const Navbar = () => {
             <Link href="/blog" className="hover:text-orange-500 transition-colors">
               Blog
             </Link>
-            <Link href="/contact" className="hover:text-orange-500 transition-colors">
-              Contact
+            <Link href="/quiz" className="hover:text-orange-500 transition-colors">
+              Quizzes
             </Link>
             
             <Link href="/chatbot" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition-colors font-medium mt-4">
