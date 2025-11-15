@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Reveal from './Reveal';
 
 const TestimonialSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -144,12 +145,16 @@ const TestimonialSection = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-orange-500 font-bold mb-3 uppercase tracking-wider text-sm">
-            TESTIMONIAL
-          </p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
-            What Our Customers Say
-          </h2>
+          <Reveal direction="down">
+            <p className="text-orange-500 font-bold mb-3 uppercase tracking-wider text-sm">
+              TESTIMONIAL
+            </p>
+          </Reveal>
+          <Reveal direction="up" delay={80}>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+              What Our Customers Say
+            </h2>
+          </Reveal>
         </div>
 
         {/* Carousel Container */}

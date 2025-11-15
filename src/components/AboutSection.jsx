@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Reveal from './Reveal';
 import Image from 'next/image';
 
 const AboutSection = () => {
@@ -9,6 +10,7 @@ const AboutSection = () => {
         <section className="py-16 px-6 lg:px-12 bg-gray-50">
             <div className="max-w-7xl mx-auto">
                 {/* Quick Service Form */}
+                <Reveal direction="down">
                 <div className="bg-white rounded-2xl shadow-lg p-8 mb-16">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
                         <div className="lg:w-1/4">
@@ -20,6 +22,7 @@ const AboutSection = () => {
                             </p>
                         </div>
 
+                        <Reveal direction="right" delay={120}>
                         <div className="flex flex-col sm:flex-row gap-4 lg:w-3/4">
                             <input
                                 type="text"
@@ -35,12 +38,15 @@ const AboutSection = () => {
                                 Join Now
                             </button>
                         </div>
+                        </Reveal>
                     </div>
                 </div>
+                </Reveal>
 
                 {/* Who We Are Section */}
                 <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
                     {/* Image */}
+                    <Reveal direction="left">
                     <div className="relative h-[400px] rounded-2xl overflow-hidden">
                         <Image
                             src="/image/about_img.png"
@@ -49,8 +55,10 @@ const AboutSection = () => {
                             className="object-cover"
                         />
                     </div>
+                    </Reveal>
 
                     {/* Content */}
+                    <Reveal direction="up" delay={80}>
                     <div>
                         <p className="text-orange-500 font-semibold mb-2 uppercase tracking-wide">
                             WHO WE ARE
@@ -148,9 +156,11 @@ const AboutSection = () => {
                             </div>
                         </div>
                     </div>
+                    </Reveal>
                 </div>
 
                 {/* Stats Section */}
+                <Reveal direction="up">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                     <div className="text-center">
                         <h3 className="text-4xl lg:text-5xl font-bold text-[#0A2540] mb-2">10,000+</h3>
@@ -172,6 +182,7 @@ const AboutSection = () => {
                         <p className="text-gray-600">Access to Free Learning Resources</p>
                     </div>
                 </div>
+                </Reveal>
             </div>
         </section>
     );

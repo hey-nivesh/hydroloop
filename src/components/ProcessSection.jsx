@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Reveal from './Reveal';
 
 const ProcessSection = () => {
   const scrollContainerRef = useRef(null);
@@ -84,21 +85,22 @@ const ProcessSection = () => {
               }}
             >
               {steps.map((step, index) => (
-                <div 
-                  key={index} 
-                  className="relative transform transition-all duration-300 hover:scale-[1.02]"
-                >
-                  {/* Card */}
-                  <div className={`${step.bgColor} ${step.textColor} rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300`}>
-                    <div className="flex items-start gap-4 mb-4">
-                      <span className="text-5xl font-bold text-orange-50">{step.number}</span>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-3 mt-1">{step.title}</h3>
-                        <p className="text-white/90 leading-relaxed text-base">{step.description}</p>
+                <Reveal key={index} direction={index % 2 === 0 ? 'up' : 'down'}>
+                  <div 
+                    className="relative transform transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    {/* Card */}
+                    <div className={`${step.bgColor} ${step.textColor} rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300`}>
+                      <div className="flex items-start gap-4 mb-4">
+                        <span className="text-5xl font-bold text-orange-50">{step.number}</span>
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold mb-3 mt-1">{step.title}</h3>
+                          <p className="text-white/90 leading-relaxed text-base">{step.description}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -148,32 +150,40 @@ const ProcessSection = () => {
           {/* Right side - Content */}
           <div className="lg:sticky lg:top-24 order-3">
             <div className="p-10">
-              <div className="inline-block">
-                <p className="text-orange-500 font-bold mb-3 uppercase tracking-wider text-sm bg-orange-50 px-4 py-2 rounded-full">
-                  OUR PROCESS
+              <Reveal direction="down">
+                <div className="inline-block">
+                  <p className="text-orange-500 font-bold mb-3 uppercase tracking-wider text-sm bg-orange-50 px-4 py-2 rounded-full">
+                    OUR PROCESS
+                  </p>
+                </div>
+              </Reveal>
+              <Reveal direction="left" delay={80}>
+                <h2 className="text-4xl lg:text-5xl font-bold text-[#0A2540] mb-6 leading-tight">
+                  Understanding Water<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
+                    Conservation Made Easy
+                  </span><br />
+                  in Just 5 Steps
+                </h2>
+              </Reveal>
+              <Reveal direction="right" delay={120}>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                  HydroLoop breaks down water conservation and rainwater harvesting into clear, easy-to-follow steps. Scroll through to see how our platform helps you learn, apply, and make an impact.
                 </p>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-[#0A2540] mb-6 leading-tight">
-                Understanding Water<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
-                  Conservation Made Easy
-                </span><br />
-                in Just 5 Steps
-              </h2>
-              <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-                HydroLoop breaks down water conservation and rainwater harvesting into clear, easy-to-follow steps. Scroll through to see how our platform helps you learn, apply, and make an impact.
-              </p>
-              <button onClick={() => router.push('/roadmaps/domestic-rainwater-harvesting')} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-3 group">
-                Start Learning
-                <svg 
-                  className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </button>
+              </Reveal>
+              <Reveal direction="up" delay={160}>
+                <button onClick={() => router.push('/roadmaps/domestic-rainwater-harvesting')} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-3 group">
+                  Start Learning
+                  <svg 
+                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </button>
+              </Reveal>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-
+import Reveal from './Reveal';
 export default function PlumbingLanding() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -144,25 +144,30 @@ export default function PlumbingLanding() {
             
             {/* Success Message */}
             {submitStatus === 'success' && (
-              <div className="bg-green-50 border border-green-400 text-green-800 px-4 py-3 rounded-lg mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                </svg>
-                <span className="font-medium">Success! Your request has been submitted. We'll contact you soon.</span>
-              </div>
+              <Reveal direction="down">
+                <div className="bg-green-50 border border-green-400 text-green-800 px-4 py-3 rounded-lg mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-medium">Success! Your request has been submitted. We'll contact you soon.</span>
+                </div>
+              </Reveal>
             )}
             
             {/* Error Message */}
             {submitStatus === 'error' && (
-              <div className="bg-red-50 border border-red-400 text-red-800 px-4 py-3 rounded-lg mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                </svg>
-                <span className="font-medium">Failed to submit. Please try again or call us directly.</span>
-              </div>
+              <Reveal direction="down">
+                <div className="bg-red-50 border border-red-400 text-red-800 px-4 py-3 rounded-lg mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-medium">Failed to submit. Please try again or call us directly.</span>
+                </div>
+              </Reveal>
             )}
             
             <div className="space-y-4">
+              <Reveal direction="up">
               <input
                 type="text"
                 name="fullName"
@@ -172,7 +177,9 @@ export default function PlumbingLanding() {
                 disabled={isSubmitting}
                 className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              </Reveal>
               
+              <Reveal direction="up" delay={60}>
               <input
                 type="email"
                 name="email"
@@ -182,7 +189,9 @@ export default function PlumbingLanding() {
                 disabled={isSubmitting}
                 className="w-full px-4 text-black py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              </Reveal>
               
+              <Reveal direction="up" delay={120}>
               <input
                 type="tel"
                 name="phone"
@@ -192,7 +201,9 @@ export default function PlumbingLanding() {
                 disabled={isSubmitting}
                 className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              </Reveal>
               
+              <Reveal direction="up" delay={180}>
               <input
                 type="text"
                 name="serviceArea"
@@ -202,7 +213,9 @@ export default function PlumbingLanding() {
                 disabled={isSubmitting}
                 className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              </Reveal>
               
+              <Reveal direction="up" delay={240}>
               <textarea
                 name="message"
                 placeholder="Your Message"
@@ -212,7 +225,9 @@ export default function PlumbingLanding() {
                 rows={4}
                 className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              </Reveal>
               
+              <Reveal direction="up" delay={300}>
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
@@ -234,10 +249,13 @@ export default function PlumbingLanding() {
                   'Send Inquiry'
               )}
               </button>
+              </Reveal>
               
-              <p className="text-xs text-gray-500 text-center">
-                * Required fields
-              </p>
+              <Reveal direction="up" delay={360}>
+                <p className="text-xs text-gray-500 text-center">
+                  * Required fields
+                </p>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -245,25 +263,28 @@ export default function PlumbingLanding() {
       
       <footer className="bg-slate-800 text-white mt-20">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 pb-12 border-b border-slate-700">
-          <div className="mb-6 md:mb-0">
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-              Join the Movement for<br />
-              Sustainable Water Management!
-            </h2>
+        <Reveal direction="up">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12 pb-12 border-b border-slate-700">
+            <div className="mb-6 md:mb-0">
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+                Join the Movement for<br />
+                Sustainable Water Management!
+              </h2>
+            </div>
+            <Reveal direction="left" delay={80}>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full flex items-center gap-2 transition duration-300">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                </svg>
+                (123) 456-7890
+              </button>
+            </Reveal>
           </div>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full flex items-center gap-2 transition duration-300">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-            </svg>
-            (123) 456-7890
-          </button>
-        </div>
+        </Reveal>
 
-        {/* Footer Links */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
+          <Reveal direction="left">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="text-blue-500 text-2xl">💧</div>
@@ -295,8 +316,10 @@ export default function PlumbingLanding() {
               </a>
             </div>
           </div>
+          </Reveal>
 
           {/* Quick Links */}
+          <Reveal direction="up" delay={60}>
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-400">
@@ -306,8 +329,10 @@ export default function PlumbingLanding() {
               <li><a href="#" className="hover:text-blue-500 transition">Contact Us</a></li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Service Areas / Modules */}
+          <Reveal direction="down" delay={120}>
           <div>
             <h3 className="font-bold text-lg mb-4">Modules</h3>
             <ul className="space-y-2 text-gray-400">
@@ -317,8 +342,10 @@ export default function PlumbingLanding() {
               <li><a href="#" className="hover:text-blue-500 transition">AI Chatbot Assistance</a></li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Contact Us */}
+          <Reveal direction="right" delay={180}>
           <div>
             <h3 className="font-bold text-lg mb-4">Contact Us</h3>
             <ul className="space-y-3 text-gray-400">
@@ -343,14 +370,16 @@ export default function PlumbingLanding() {
               </li>
             </ul>
           </div>
+          </Reveal>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-8 border-t border-slate-700 text-center text-gray-400 text-sm">
-          © 2025 HydroLoop. All Rights Reserved.
-        </div>
+        <Reveal direction="up">
+          <div className="pt-8 border-t border-slate-700 text-center text-gray-400 text-sm">
+            © 2025 HydroLoop. All Rights Reserved.
+          </div>
+        </Reveal>
       </div>
-    </footer>
+      </footer>
     </div>
   );
 }

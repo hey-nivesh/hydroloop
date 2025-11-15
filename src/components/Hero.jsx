@@ -1,7 +1,45 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Reveal from './Reveal';
 
 const Hero = () => {
+  const [line1, setLine1] = useState('');
+  const [line2, setLine2] = useState('');
+
+  useEffect(() => {
+    const full1 = 'Building a Water-Smart';
+    const full2 = 'Future Together';
+
+    let i1 = 0;
+    let i2 = 0;
+    let timeoutId;
+
+    const typeLine1 = () => {
+      if (i1 <= full1.length) {
+        setLine1(full1.slice(0, i1));
+        i1 += 1;
+        timeoutId = setTimeout(typeLine1, 60);
+      } else {
+        timeoutId = setTimeout(typeLine2, 200);
+      }
+    };
+
+    const typeLine2 = () => {
+      if (i2 <= full2.length) {
+        setLine2(full2.slice(0, i2));
+        i2 += 1;
+        timeoutId = setTimeout(typeLine2, 60);
+      }
+    };
+
+    typeLine1();
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen text-white">
       {/* Background Image */}
@@ -20,22 +58,26 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-32">
         <div className="max-w-2xl">
           {/* Small Badge */}
-          <div className="inline-block border border-orange-500 rounded-full px-4 py-1 mb-6">
-            <span className="text-orange-500 text-sm font-medium">24/7 Emergency Service</span>
-          </div>
+
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Building a Water-Smart<br/>
-            Future Together
-          </h1>
+          <Reveal direction="up">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight slide-up">
+              <span>{line1}</span>
+              <br/>
+              <span>{line2}</span>
+            </h1>
+          </Reveal>
 
           {/* Description */}
-          <p className="text-gray-300 text-lg mb-8 max-w-xl">
-            HydroLoop helps communities understand rainwater harvesting through visuals, stories, and interactive learning. Explore how simple changes can protect our future water supply.
-          </p>
+          <Reveal direction="left" delay={100}>
+            <p className="text-gray-300 text-lg mb-8 max-w-xl">
+              HydroLoop helps communities understand rainwater harvesting through visuals, stories, and interactive learning. Explore how simple changes can protect our future water supply.
+            </p>
+          </Reveal>
 
           {/* CTA Buttons */}
+          <Reveal direction="right" delay={150}>
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a href="/roadmaps/domestic-rainwater-harvesting" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-lg hover:shadow-xl">
               Explore Roadmaps
@@ -44,8 +86,10 @@ const Hero = () => {
               Why It Matters
             </a>
           </div>
+          </Reveal>
 
           {/* Trust Badges */}
+          <Reveal direction="up" delay={200}>
           <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-gray-700">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
@@ -95,6 +139,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
 
@@ -106,6 +151,11 @@ const Hero = () => {
           </svg>
         </div>
       </div>
+
+      <style>{`
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px);} to { opacity: 1; transform: translateY(0);} }
+        .slide-up { animation: slideUp 600ms ease-out forwards; }
+      `}</style>
     </section>
   );
 };
