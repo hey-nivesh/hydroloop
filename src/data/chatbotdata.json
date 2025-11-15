@@ -1,0 +1,126 @@
+{
+  "introduction": {
+  "what_is_rainwater_harvesting": "Rainwater harvesting is the process of collecting, storing, filtering, and reusing rainwater for various domestic, commercial, industrial, agricultural, and public uses. It reduces water wastage, supports groundwater recharge, and ensures sustainable water availability.",
+  "why_it_matters": "Freshwater resources are declining due to overextraction, climate change, and urbanization. Rainwater harvesting helps reduce dependency on groundwater, prevents flooding, recharges aquifers, and provides clean water for non-potable needs."
+},
+
+"categories": {
+  "domestic": {
+    "overview": "Simple household systems designed to capture rainwater from roofs and store it for domestic use such as gardening, cleaning, flushing, and groundwater recharge.",
+    "steps": [
+      "Identify roof catchment and measure area.",
+      "Install gutters with leaf guards and first-flush filters.",
+      "Connect gutters to downpipes and filters.",
+      "Install a plastic, cement, or metal storage tank.",
+      "Use sand, gravel, and charcoal for basic filtration.",
+      "Reuse stored water for gardening, flushing, and cleaning.",
+      "Clean gutters and filters regularly."
+    ],
+    "common_questions": {
+      "how_much_can_i_collect": "Every 1 sq. meter of roof + 1 mm rainfall gives roughly 1 litre of water.",
+      "is_it_drinkable": "Only after purification using RO, UV, boiling, or advanced filtration."
+    }
+  },
+
+  "commercial_and_residential_societies": {
+    "overview": "Medium-scale rainwater harvesting for apartments, offices, schools, hospitals, and gated communities.",
+    "steps": [
+      "Calculate total terrace and roof area.",
+      "Merge all building downpipes into a main line.",
+      "Use a first-flush diverter to remove dirty initial runoff.",
+      "Install large RCC or underground tanks.",
+      "Add multi-layer filtration with silt traps, sand, and carbon filters.",
+      "Reuse harvested water for flushing, car washing, and landscaping.",
+      "Construct deep recharge wells for excess water."
+    ],
+    "benefits": [
+      "Reduced tanker dependence",
+      "Lower water bills",
+      "Higher groundwater levels",
+      "Green building certification support"
+    ]
+  },
+
+  "industrial_and_factory": {
+    "overview": "Large-scale systems handling high roof runoff from factories, warehouses, and manufacturing units.",
+    "steps": [
+      "Conduct a runoff and rainfall audit.",
+      "Install wide gutters for large flow volumes.",
+      "Add pre-treatment (silt traps, oil separators).",
+      "Use HDPE or RCC modular tanks for huge storage.",
+      "Filter using industrial-grade sand and carbon filters.",
+      "Reuse water for cooling towers, cleaning, landscaping."
+    ],
+    "safety_guidelines": [
+      "Clean rooftop areas frequently.",
+      "Monitor chemical contamination.",
+      "Keep tanks sealed to avoid algae."
+    ]
+  },
+
+  "roads_and_public_infrastructure": {
+    "overview": "Capturing road and stormwater runoff using recharge pits, trenches, and storm drains.",
+    "steps": [
+      "Locate drainage paths and stagnation points.",
+      "Build gravel-filled recharge trenches.",
+      "Install deep percolation pits.",
+      "Use silt traps to stop mud and garbage.",
+      "Divert stormwater drains to recharge structures.",
+      "Clean traps and pits before monsoon."
+    ],
+    "benefits": [
+      "Reduces flooding",
+      "Improves groundwater",
+      "Prevents stormwater wastage"
+    ]
+  },
+
+  "government_and_public_projects": {
+    "overview": "Large-scale city or district-level harvesting projects by municipalities and state governments.",
+    "steps": [
+      "Conduct hydrological surveys.",
+      "Build check dams for seasonal streams.",
+      "Install deep bore recharge wells.",
+      "Harvest rooftop rainwater in public buildings.",
+      "Educate and train communities.",
+      "Track groundwater rise annually."
+    ],
+    "examples": [
+      "Chennai rainwater harvesting model",
+      "Ralegan Siddhi watershed program"
+    ]
+  },
+
+  "agricultural_and_rural": {
+    "overview": "Farm-level water conservation using ponds, bunds, trenches, and rooftop harvesting for livestock.",
+    "steps": [
+      "Map field slopes for natural rain flow.",
+      "Build farm ponds to store monsoon water.",
+      "Use bunds to slow flowing water.",
+      "Construct trenches and percolation pits.",
+      "Install simple rooftop harvesting for sheds.",
+      "Clean and repair before monsoon."
+    ],
+    "impact": [
+      "Reduced irrigation cost",
+      "Higher crop yield",
+      "Improved soil moisture",
+      "Less borewell dependency"
+    ]
+  }
+},
+
+"faq": {
+  "is_rainwater_safe": "Safe for non-potable use; for drinking, purify through RO, UV, or boiling.",
+  "how_much_does_a_system_cost": "Home systems cost ₹3,000–₹15,000; society systems vary based on tank size and filtration.",
+  "how_often_to_clean": "Gutters monthly, filters every 2–3 months, tanks every 6–12 months.",
+  "what_are_first_flush_systems": "Devices that remove the first few litres of dirty rooftop runoff.",
+  "can_it_reduce_water_bills": "Homes save 20–40%, societies save 40–60%."
+},
+
+"troubleshooting": {
+  "low_water_flow": "Check for clogged gutters or blocked filters.",
+  "bad_odour_in_tank": "Clean the tank and allow occasional sun exposure.",
+  "overflowing_tank": "Add an overflow pipe to a recharge pit or garden."
+}
+}

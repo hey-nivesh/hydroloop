@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const ProcessSection = () => {
   const scrollContainerRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const router = useRouter();
 
   const steps = [
     {
@@ -161,7 +163,7 @@ const ProcessSection = () => {
               <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                 HydroLoop breaks down water conservation and rainwater harvesting into clear, easy-to-follow steps. Scroll through to see how our platform helps you learn, apply, and make an impact.
               </p>
-              <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-3 group">
+              <button onClick={() => router.push('/roadmaps/domestic-rainwater-harvesting')} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-3 group">
                 Start Learning
                 <svg 
                   className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 

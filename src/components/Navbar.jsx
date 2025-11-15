@@ -39,8 +39,14 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">HL</span>
+            <div className="w-15 h-15 bg-white rounded-full flex items-center justify-center">
+              <img
+                src="/image/logo.png"
+                alt="HydroLoop Logo"
+                width={55}
+                height={55}
+                className='rounded-full'
+              />
             </div>
             <span className="text-xl font-bold">HyroLoop</span>
           </Link>
@@ -102,9 +108,9 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <div className="flex items-center space-x-4">
-          <button className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition-colors font-medium">
-            Explore Roadmaps
-          </button>
+          <Link href="/chatbot" className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition-colors font-medium">
+            Talk to Chatbot
+          </Link>
           
           {/* Mobile Menu Button */}
           <button 
@@ -172,9 +178,9 @@ const Navbar = () => {
               Contact
             </Link>
             
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition-colors font-medium mt-4">
-              Explore Roadmaps
-            </button>
+            <Link href="/chatbot" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition-colors font-medium mt-4">
+              Talk to Chatbot
+            </Link>
           </div>
         </div>
       )}

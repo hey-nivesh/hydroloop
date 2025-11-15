@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function PlumbingLanding() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,9 @@ export default function PlumbingLanding() {
     serviceArea: '',
     message: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -17,26 +21,101 @@ export default function PlumbingLanding() {
     });
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    alert('Request submitted successfully!');
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleSubmit = async () => {
+    // Validate form
+    if (!formData.fullName.trim()) {
+      alert('Please enter your full name');
+      return;
+    }
+    
+    if (!formData.email.trim()) {
+      alert('Please enter your email address');
+      return;
+    }
+    
+    if (!validateEmail(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    if (!formData.phone.trim()) {
+      alert('Please enter your phone number');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // EmailJS configuration
+      const serviceId = 'service_6475aje';
+      const templateId = 'template_k7nroij'; // Replace with your template ID from EmailJS
+      const publicKey = '16ULlEqI6u4XGMFRd'; // Replace with your public key from EmailJS
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          serviceArea: formData.serviceArea,
+          message: formData.message,
+          to_name: 'FixFlow Team' // Optional: recipient name
+        },
+        publicKey
+      );
+
+      console.log('Email sent successfully!', response.status, response.text);
+      setSubmitStatus('success');
+      
+      // Reset form after successful submission
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        serviceArea: '',
+        message: ''
+      });
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setSubmitStatus('error');
+      
+      // Auto-hide error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section with Background Image */}
-      <div className="relative h-96 bg-cover bg-center" style={{
-        backgroundImage: "url('/image/feedback_img.png')",
-        backgroundBlendMode: 'overlay',
-        backgroundColor: 'rgba(1, 0, 0, 0.5)'
-      }}>
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="relative h-96">
+        {/* Background with gradient overlay */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <p className="text-orange-500 text-sm font-semibold mb-2 tracking-wider">CONTACT US</p>
           <h1 className="text-white text-4xl md:text-5xl font-bold leading-tight">
-            Book Expert Plumbing<br />Service Today!
+            Get Guidance on Rainwater Harvesting Today
           </h1>
         </div>
       </div>
@@ -47,82 +126,123 @@ export default function PlumbingLanding() {
           {/* Left Content */}
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              24/7 Emergency Plumbing Service
+              Community Rainwater Harvesting Support
             </h2>
             <p className="text-gray-700 mb-4 font-semibold">
-              Don't let plumbing issues disrupt your home! FixFlow offers 24/7 
-              emergency plumbing services, ensuring fast, professional, and reliable 
-              repairs. Call now and get a licensed plumber at your doorstep!
+              Need help understanding rainwater harvesting or setting up a system? HydroLoop provides clear guidance, expert-backed information, and community support to help you take the right steps. Whether you're installing a home system, planning a school model, or designing a community project, we’re here to assist you.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              We understand the stress and potential damage a plumbing emergency can 
-              cause, which is why we prioritize quick response times, quality repairs, and 
-              customer satisfaction. Whether it's a small leak or a major flooding issue, 
-              our licensed professionals arrive fully equipped.
+              We help you understand system design, filtration methods, storage options, recharge structures, and maintenance best practices. Our goal is to make water conservation simple, practical, and accessible for everyone.
             </p>
           </div>
 
           {/* Contact Form - Overlapping */}
           <div className="bg-white p-8 rounded-lg shadow-xl">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              Get in Touch with Us
+              Get in Touch With Us
             </h3>
+            
+            {/* Success Message */}
+            {submitStatus === 'success' && (
+              <div className="bg-green-50 border border-green-400 text-green-800 px-4 py-3 rounded-lg mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                </svg>
+                <span className="font-medium">Success! Your request has been submitted. We'll contact you soon.</span>
+              </div>
+            )}
+            
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <div className="bg-red-50 border border-red-400 text-red-800 px-4 py-3 rounded-lg mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
+                </svg>
+                <span className="font-medium">Failed to submit. Please try again or call us directly.</span>
+              </div>
+            )}
+            
             <div className="space-y-4">
               <input
                 type="text"
                 name="fullName"
-                placeholder="Your full name"
+                placeholder="Full Name*"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                disabled={isSubmitting}
+                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
               
               <input
                 type="email"
                 name="email"
-                placeholder="Email address"
+                placeholder="Email Address*"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 text-black py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                disabled={isSubmitting}
+                className="w-full px-4 text-black py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
               
               <input
                 type="tel"
                 name="phone"
-                placeholder="Phone number"
+                placeholder="Phone Number*"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                disabled={isSubmitting}
+                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
               
               <input
                 type="text"
                 name="serviceArea"
-                placeholder="Service areas"
+                placeholder="Project Type (Home, School, Society, Industrial, Rural, etc.)"
                 value={formData.serviceArea}
                 onChange={handleChange}
-                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                disabled={isSubmitting}
+                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
               />
               
               <textarea
                 name="message"
-                placeholder="Type your message"
+                placeholder="Your Message"
                 value={formData.message}
                 onChange={handleChange}
-                rows="4"
-                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
-              ></textarea>
+                disabled={isSubmitting}
+                rows={4}
+                className="w-full text-black px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+              />
               
               <button
                 onClick={handleSubmit}
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 rounded-full transition duration-300 shadow-lg"
+                disabled={isSubmitting}
+                className={`w-full ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-orange-500 hover:bg-orange-600'
+                } text-white font-semibold py-4 rounded-full transition duration-300 shadow-lg flex items-center justify-center gap-2`}
               >
-                Submit Request
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Submitting...
+                  </>
+                ) : (
+                  'Send Inquiry'
+              )}
               </button>
+              
+              <p className="text-xs text-gray-500 text-center">
+                * Required fields
+              </p>
             </div>
           </div>
         </div>
       </div>
+      
       <footer className="bg-slate-800 text-white mt-20">
         <div className="max-w-7xl mx-auto px-4 py-16">
           {/* Top Section */}
@@ -227,7 +347,7 @@ export default function PlumbingLanding() {
 
           {/* Copyright */}
           <div className="pt-8 border-t border-slate-700 text-center text-gray-400 text-sm">
-            © 2025 FixFlow. All Rights Reserved.
+            © 2025 HydroLoop. All Rights Reserved.
           </div>
         </div>
       </footer>

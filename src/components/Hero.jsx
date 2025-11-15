@@ -37,12 +37,12 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-lg hover:shadow-xl">
+            <a href="/roadmaps/domestic-rainwater-harvesting" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-lg hover:shadow-xl">
               Explore Roadmaps
-            </button>
-            <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white px-8 py-4 rounded-full font-semibold transition-colors">
+            </a>
+            <a href='/blog' className="bg-transparent hover:bg-white/10 text-white border-2 border-white px-8 py-4 rounded-full font-semibold transition-colors">
               Why It Matters
-            </button>
+            </a>
           </div>
 
           {/* Trust Badges */}

@@ -129,7 +129,7 @@ const QualityWorkSection = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-3 mx-auto group">
+          <a href="https://www.youtube.com/results?search_query=rain+water+harvesting+initiatives" className="w-67 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-3 mx-auto group">
             View All Initiatives
             <svg 
               className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
@@ -139,7 +139,7 @@ const QualityWorkSection = () => {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </button>
+          </a>
         </div>
       </div>
     </section>
