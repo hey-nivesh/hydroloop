@@ -87,11 +87,13 @@ export default function BlogPage() {
       <header className="bg-[#e4f2db] border-b border-[#5b6668]/20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-2">
             <div className="relative">
               <img src="/image/logo.png" alt="HydroLoop Logo" width={40} height={40} />
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#d0ab67] rounded-full"></div>
             </div>
-            <span className="text-sm font-semibold text-[#2a3f5b] tracking-wider">HydroLoop</span>
+            <span className="text-xl text-black font-bold">HydroLoop</span>
+          </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-8 text-sm">
             <Link href="/" className="text-[#2a3f5b] hover:text-[#2c65a4] font-medium">HOME</Link>
